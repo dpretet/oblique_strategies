@@ -1,0 +1,5 @@
+# Requirements for Oblique Strategies
+# To install: pip install -r requirements.txt
+
+rich>=13.0.0
+textual>=0.60.0

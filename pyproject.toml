@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "oblique-strategies"
+version = "0.1.0"
+description = "A tool to draw Oblique Strategies by Brian Eno."
+authors = ["Damien <damien.pretet@me.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "oblique_strategies", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+rich = "^13.0.0"
+textual = "^0.60.0"
+
+[tool.poetry.scripts]
+oblique = "oblique_strategies.__main__:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.urls]
+homepage = "https://github.com/dpretet/oblique_strategies"
+repository = "https://github.com/dpretet/oblique_strategies"
