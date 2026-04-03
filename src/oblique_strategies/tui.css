@@ -1,37 +1,42 @@
 /* TUI Styles */
 
-#app-container {
-    layout: grid;
-    grid-size: 1;
-    grid-rows: 1fr auto;
-    padding: 1 2;
+Screen {
+    align: center middle;
 }
 
-#strategy-display {
-    dock: top;
+#main-container {
     width: 100%;
     height: 100%;
+    layout: vertical;
+    align: center middle;
+}
+
+#strategy-container {
+    width: 100%;
+    height: 70%;
+    layout: vertical;
+    align: center middle;
+}
+
+#strategy-text {
+    width: 80%;
+    height: auto;
     content-align: center middle;
-    padding: 2;
+    padding: 2 3;
     border: round white;
     background: $panel;
 }
 
-#button-container {
-    dock: bottom;
+/* Key hint style */
+#key-hint {
     width: 100%;
-    layout: horizontal;
-    padding: 1;
     content-align: center middle;
+    margin-top: 2;
+    color: $text-muted;
+    text-style: bold;
 }
 
-Button {
-    margin: 0 1;
-    width: 20;
-}
-
-#help-container {
-    layout: vertical;
-    padding: 1;
-    content-align: center middle;
+/* Full screen mode */
+ObliqueApp {
+    layer: app;
 }

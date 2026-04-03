@@ -49,6 +49,10 @@ build() {
 # Function to install the package in development mode
 install() {
     echo "Installing the package in development mode..."
+    # Clean any existing artifacts
+    rm -rf build/ dist/ __pycache__/ src/oblique_strategies/__pycache__/
+    rm -f venv/bin/oblique
+    # Install fresh
     pip install -e .
 }
 
@@ -60,13 +64,23 @@ package() {
         pip install pyinstaller
     fi
     
-    # Clean previous builds
-    rm -rf build/ dist/
+    # Clean previous builds and cache
+    rm -rf build/ dist/ __pycache__/ src/oblique_strategies/__pycache__/
     
-    # Use PyInstaller with minimal options
-    pyinstaller --onefile --name oblique --paths src/ --hidden-import oblique_strategies --noupx --exclude-module tk --exclude-module unittest src/oblique_strategies/__main__.py
+    # Use PyInstaller with proper configuration
+    pyinstaller --onefile --name oblique \
+               --paths src/ \
+               --hidden-import oblique_strategies \
+               --noupx \
+               --exclude-module tk \
+               --exclude-module unittest \
+               --clean \
+               --console \
+               --add-data "src/oblique_strategies/data:oblique_strategies/data" \
+               src/oblique_strategies/__main__.py
 
     echo "Standalone executable created: dist/oblique"
+    echo "You can now run: ./dist/oblique"
 }
 
 # Function to run tests
@@ -80,7 +94,7 @@ test() {
 # Function to run the application
 run() {
     echo "Running the application..."
-    oblique
+    python -m oblique_strategies
 }
 
 # Function to clean build artifacts
